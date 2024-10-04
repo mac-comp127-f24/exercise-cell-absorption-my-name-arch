@@ -169,36 +169,3 @@ This is the logic for letting one cell absorb another. You do not need to unders
 
 Think about how awkward this code would be if `Cell` were not its own separate class. Imagine instead that all the information about each call were a collection of loose variables you had to pass around as separate parameters: two radii, two shapes, two directions, etc. Note how giving cells behaviors like `absorb` and `setRadius` makes the code readable. The `Cell` abstraction helps keep this code make sense.
 
-Last up, add this method to `CellSimulation` to make every cell interact with every other cell:
-
-```java
-    private void handleCellInteraction() {
-        // for i from 0 up to max cell index
-            // get cell at index i
-            // for j from i+1 up to max cell index
-                // get cell at index j
-                // make the two cells interact
-    }
-```
-
-If that’s a little daunting, here’s how to do the loops:
-<details>
-  <summary>Expand for hint</summary>
-  
-  ```java
-      private void handleCellInteraction() {
-          for (int i = 0; i < cells.size(); i++) {
-              Cell cell0 = cells.get(i);
-              for (int j = i + 1; j < cells.size(); j++) {
-                  Cell cell1 = cells.get(j);
-                  // TODO: insert call here to make cell0 interact with cell1
-              }
-          }
-      }
-  ```
-</details>
-<br>
-
-Now add a call to `handleCellInteraction()` in the simulation’s while loop.
-
-Run the code! You should now see the cells absorbing each other when they touch. It’s a cell-eat-cell world in the petri dish!
